@@ -5,6 +5,7 @@ from langchain_groq import ChatGroq
 import os
 from tools.search_tools import SearchTools
 from tools.calculator_tools import CalculatorTools
+import streamlit as st
 
 """
 Creating Agents Cheat Sheet:
@@ -36,7 +37,7 @@ Notes:
 
 class TravelAgents:
     def __init__(self):
-        self.OpenAIGPT4 = ChatGroq(groq_api_key=os.environ['GROQ_API_KEY'], model_name="llama-3.1-70b-versatile", temperature=0)
+        self.OpenAIGPT4 = ChatGroq(groq_api_key=st.secrets['GROQ_API_KEY'], model_name="llama-3.1-70b-versatile", temperature=0)
 
     def expert_travel_agent(self):
         return Agent(

@@ -1,5 +1,6 @@
 import json
 import os
+import streamlit as st
 
 import requests
 from langchain.tools import tool
@@ -15,7 +16,7 @@ class SearchTools():
         url = "https://google.serper.dev/search"
         payload = json.dumps({"q": query})
         headers = {
-            'X-API-KEY': os.environ['SERPER_API_KEY'],
+            'X-API-KEY': st.secrets['SERPER_API_KEY'],
             'content-type': 'application/json'
         }
         response = requests.request("POST", url, headers=headers, data=payload)
